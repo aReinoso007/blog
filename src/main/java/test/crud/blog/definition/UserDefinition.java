@@ -9,8 +9,7 @@ import java.util.List;
 public interface UserDefinition {
 
     public User getUserDataByCreds(UserDTO userDTO);
-    public List<Blog> getUserPosts(Long userUid);
     public User updateUserInfo(User user);
-
+    public User getUserInfo(Long uid);
 
 }
