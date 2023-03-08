@@ -1,25 +1,31 @@
 package test.crud.blog.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 import java.io.Serializable;
+import java.util.List;
 
-@Entity(name = "BL_USER")
+@Entity(name = "USUARIO")
 public class User implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "USUARIO_UID")
     private Long uid;
+    @Column(name = "USUARIO_NAME")
     private String name;
+    @Column(name = "USUARIO_LASTNAME")
     private String lastName;
+    @Column(name = "USUARIO_USERNAME")
     private String username;
+    @Column(name = "USUARIO_EMAIL")
     private String email;
+    @Column(name = "USUARIO_PASSWORD")
     private String password;
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<Blog> blogList;
 
     public User() {
     }
@@ -79,5 +85,26 @@ public class User implements Serializable {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public List<Blog> getBlogList() {
+        return blogList;
+    }
+
+    public void setBlogList(List<Blog> blogList) {
+        this.blogList = blogList;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "uid=" + uid +
+                ", name='" + name + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", username='" + username + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", blogList=" + blogList +
+                '}';
     }
 }
