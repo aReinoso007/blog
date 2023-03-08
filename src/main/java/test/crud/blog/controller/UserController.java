@@ -1,5 +1,6 @@
 package test.crud.blog.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -7,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import test.crud.blog.dto.UserDTO;
 import test.crud.blog.entity.Blog;
 import test.crud.blog.entity.User;
+import test.crud.blog.repository.UserRepository;
 
 import java.net.http.HttpResponse;
 import java.util.ArrayList;
@@ -16,7 +18,8 @@ import java.util.List;
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RequestMapping("/user")
 public class UserController {
-
+    @Autowired
+    private UserRepository userRepository;
 
     @GetMapping(value = "/hola")
     public ResponseEntity<?> appInit(){
@@ -26,6 +29,7 @@ public class UserController {
 
     @PostMapping(value = "/registro")
     public ResponseEntity<?> signUp(@RequestBody User user){
+        userRepository.save(user);
         return ResponseEntity.status(HttpStatus.CREATED).body("creado");
     }
 
