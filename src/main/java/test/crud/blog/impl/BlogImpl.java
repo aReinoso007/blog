@@ -1,12 +1,14 @@
 package test.crud.blog.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import test.crud.blog.dao.BlogDAO;
 import test.crud.blog.definition.BlogDefinition;
 import test.crud.blog.entity.Blog;
 
 import java.util.List;
 
+@Service
 public class BlogImpl implements BlogDefinition {
 
     @Autowired

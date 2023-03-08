@@ -1,14 +1,21 @@
 package test.crud.blog.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import test.crud.blog.dao.UserDao;
 import test.crud.blog.definition.UserDefinition;
 import test.crud.blog.entity.User;
 
+@Service
 public class UserImpl implements UserDefinition {
 
     @Autowired
     UserDao userDao;
+
+    @Override
+    public User saveUser(User user) {
+        return userDao.save(user);
+    }
 
     @Override
     public User getUserDataByCreds(String email, String password) {

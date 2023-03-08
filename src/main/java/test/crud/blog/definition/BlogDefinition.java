@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface BlogDefinition {
 
-    public List<Blog> getAll();
-    public Blog getBlogById(Long blogUid);
-    public List<Blog> getUserBlogsByUID(Long userUID);
+    List<Blog> getAll();
+    Blog getBlogById(Long blogUid);
+    List<Blog> getUserBlogsByUID(Long userUID);
 }

@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import test.crud.blog.dto.UserDTO;
 import test.crud.blog.entity.Blog;
 import test.crud.blog.entity.User;
-import test.crud.blog.dao.UserDao;
+import test.crud.blog.impl.UserImpl;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,7 +18,7 @@ import java.util.List;
 @RequestMapping("/user")
 public class UserController {
     @Autowired
-    private UserDao userDao;
+    private UserImpl userService;
 
     @GetMapping(value = "/hola")
     public ResponseEntity<?> appInit(){
@@ -28,8 +28,8 @@ public class UserController {
 
     @PostMapping(value = "/registro")
     public ResponseEntity<?> signUp(@RequestBody User user){
-        userDao.save(user);
-        return ResponseEntity.status(HttpStatus.CREATED).body("creado");
+        /*Podria usar un diccionario para poner el tipo de retorno que tengo, si es error o exito */
+        return userService.saveUser(user)!= null ? ResponseEntity.status(HttpStatus.CREATED).body("Usuario creado con exito") : ResponseEntity.status(HttpStatus.CONFLICT).body("Algo salio mal");
     }
 
     @GetMapping(value = "/login")

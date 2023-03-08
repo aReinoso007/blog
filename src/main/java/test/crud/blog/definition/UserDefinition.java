@@ -3,9 +3,9 @@ import test.crud.blog.entity.User;
 
 
 public interface UserDefinition {
-
-    public User getUserDataByCreds(String email, String password);
-    public User updateUserInfo(User user);
-    public User getUserInfo(Long uid);
+    User saveUser(User user);
+    User getUserDataByCreds(String email, String password);
+    User updateUserInfo(User user);
+    User getUserInfo(Long uid);
 
 }
