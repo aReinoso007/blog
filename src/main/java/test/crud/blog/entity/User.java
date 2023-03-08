@@ -6,6 +6,7 @@ import java.io.Serializable;
 import java.util.List;
 
 @Entity(name = "USUARIO")
+@Embeddable
 public class User implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -13,6 +14,7 @@ public class User implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "USUARIO_UID")
+    @EmbeddedId
     private Long uid;
     @Column(name = "USUARIO_NAME")
     private String name;

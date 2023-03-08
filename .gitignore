@@ -1,3 +1,24 @@
+
+.gradle
+build/
+build/tmp/compileJava/*
+build/tmp/*
+!gradle/wrapper/gradle-wrapper.jar
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+
+
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+bin/
+!**/src/main/**/bin/
+!**/src/test/**/bin/
 # Compiled class file
 *.class
 
@@ -33,3 +54,7 @@ replay_pid*
 
 .gradle/*
 .gradle\vcs-1\gc.properties
+
+
+
+build/tmp/compileJava/previous-compilation-data.bin

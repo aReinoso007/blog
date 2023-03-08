@@ -2,6 +2,7 @@ package test.crud.blog.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
+import test.crud.blog.enums.BlogEnum;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -19,9 +20,14 @@ public class Blog implements Serializable {
     @Column(name = "BLOG_CONTENT")
     private String content;
     @Column(name = "BLOG_CREATEDAT")
+    @Temporal(TemporalType.DATE)
     private Date createdAt;
     @Column(name = "BLOG_UPDATEDAT")
+    @Temporal(TemporalType.DATE)
     private Date updatedAt;
+    @Column(name = "BLOG_STATUS")
+    @Enumerated(EnumType.STRING)
+    private BlogEnum status;
     @ManyToOne
     @JoinColumn(name = "USER_UID")
     @JsonBackReference
