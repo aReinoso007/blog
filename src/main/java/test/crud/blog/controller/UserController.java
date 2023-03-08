@@ -8,9 +8,8 @@ import org.springframework.web.bind.annotation.*;
 import test.crud.blog.dto.UserDTO;
 import test.crud.blog.entity.Blog;
 import test.crud.blog.entity.User;
-import test.crud.blog.repository.UserRepository;
+import test.crud.blog.dao.UserDao;
 
-import java.net.http.HttpResponse;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,7 +18,7 @@ import java.util.List;
 @RequestMapping("/user")
 public class UserController {
     @Autowired
-    private UserRepository userRepository;
+    private UserDao userDao;
 
     @GetMapping(value = "/hola")
     public ResponseEntity<?> appInit(){
@@ -29,7 +28,7 @@ public class UserController {
 
     @PostMapping(value = "/registro")
     public ResponseEntity<?> signUp(@RequestBody User user){
-        userRepository.save(user);
+        userDao.save(user);
         return ResponseEntity.status(HttpStatus.CREATED).body("creado");
     }
 
