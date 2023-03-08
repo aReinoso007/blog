@@ -14,7 +14,6 @@ public class User implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "USUARIO_UID")
-    @EmbeddedId
     private Long uid;
     @Column(name = "USUARIO_NAME")
     private String name;

@@ -26,6 +26,6 @@ public class BlogImpl implements BlogDefinition {
 
     @Override
     public List<Blog> getUserBlogsByUID(Long userUID) {
-        return blogDAO.findByUserUid(userUID);
+        return blogDAO.findAllByUserUid(userUID);
     }
 }

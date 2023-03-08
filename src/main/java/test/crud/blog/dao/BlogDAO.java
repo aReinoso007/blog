@@ -10,5 +10,5 @@ public interface BlogDAO extends JpaRepository<Blog, Long> {
 
     List<Blog> findAll();
     Blog findByUid(Long blogUID);
-    List<Blog> findByUserUid(Long userUID);
+    List<Blog> findAllByUserUid(Long userUID);
 }
