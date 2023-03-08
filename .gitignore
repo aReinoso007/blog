@@ -24,10 +24,12 @@ hs_err_pid*
 replay_pid*
 
 .idea/*
-./gradle
 .idea/artifacts
 .idea/compiler.xml
 .idea/jarRepositories.xml
 .idea/modules.xml
 .idea/*.iml
 .idea/modules
+
+.gradle/*
+.gradle\vcs-1\gc.properties
