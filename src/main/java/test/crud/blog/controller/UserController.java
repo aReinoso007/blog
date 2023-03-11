@@ -21,7 +21,7 @@ public class UserController {
     private UserImpl userService;
 
     @GetMapping(value = "/")
-    public ResponseEntity<?> appInit(){
+    public ResponseEntity<?> getAllUsers(){
         return ResponseEntity.status(HttpStatus.OK).contentType(MediaType.APPLICATION_JSON).body(userService.getAllUsers());
     }
 
@@ -41,7 +41,8 @@ public class UserController {
 
     @PutMapping(value = "/update_info")
     public ResponseEntity<?> updateUserInfo(@RequestBody User user){
-        return ResponseEntity.status(HttpStatus.OK).body("updated");
+        User appUser = userService.saveUser(user);
+        return ResponseEntity.status(HttpStatus.OK).contentType(MediaType.APPLICATION_JSON).body(appUser);
     }
 
 }
