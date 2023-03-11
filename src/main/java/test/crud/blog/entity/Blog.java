@@ -1,10 +1,12 @@
 package test.crud.blog.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import test.crud.blog.enums.BlogEnum;
 
 import java.io.Serializable;
+import java.sql.Timestamp;
 import java.util.Date;
 
 @Entity(name = "BLOG")
@@ -20,11 +22,14 @@ public class Blog implements Serializable {
     @Column(name = "BLOG_CONTENT")
     private String content;
     @Column(name = "BLOG_CREATEDAT")
-    @Temporal(TemporalType.DATE)
-    private Date createdAt;
+    @Temporal(TemporalType.TIMESTAMP)
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm", timezone = "America/Guayaquil")
+    private Timestamp createdAt;
+
     @Column(name = "BLOG_UPDATEDAT")
-    @Temporal(TemporalType.DATE)
-    private Date updatedAt;
+    @Temporal(TemporalType.TIMESTAMP)
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm", timezone = "America/Guayaquil")
+    private Timestamp updatedAt;
     @Column(name = "BLOG_STATUS")
     @Enumerated(EnumType.STRING)
     private BlogEnum status;
@@ -38,7 +43,7 @@ public class Blog implements Serializable {
 
 
 
-    public Blog(String title, String content, Date createdAt, Date updatedAt, User user) {
+    public Blog(String title, String content, Timestamp createdAt, Timestamp updatedAt, User user) {
         this.title = title;
         this.content = content;
         this.createdAt = createdAt;
@@ -74,15 +79,15 @@ public class Blog implements Serializable {
         return createdAt;
     }
 
-    public void setCreatedAt(Date createdAt) {
+    public void setCreatedAt(Timestamp createdAt) {
         this.createdAt = createdAt;
     }
 
-    public Date getUpdatedAt() {
+    public Timestamp getUpdatedAt() {
         return updatedAt;
     }
 
-    public void setUpdatedAt(Date updatedAt) {
+    public void setUpdatedAt(Timestamp updatedAt) {
         this.updatedAt = updatedAt;
     }
 
@@ -92,6 +97,14 @@ public class Blog implements Serializable {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public BlogEnum getStatus() {
+        return status;
+    }
+
+    public void setStatus(BlogEnum status) {
+        this.status = status;
     }
 
     @Override

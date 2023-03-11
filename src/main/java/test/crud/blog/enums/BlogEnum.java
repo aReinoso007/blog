@@ -2,7 +2,7 @@ package test.crud.blog.enums;
 
 public enum BlogEnum implements Indentify<BlogEnum>{
 
-    ACTIVO("ACTIVO"), DELETED("DELETED");
+    ACTIVE("ACTIVE"), DELETED("DELETED");
 
     private String description;
 

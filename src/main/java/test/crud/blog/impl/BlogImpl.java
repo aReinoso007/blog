@@ -7,7 +7,9 @@ import test.crud.blog.dao.UserDao;
 import test.crud.blog.definition.BlogDefinition;
 import test.crud.blog.dto.BlogDTO;
 import test.crud.blog.entity.Blog;
+import test.crud.blog.enums.BlogEnum;
 
+import java.sql.Timestamp;
 import java.util.Date;
 import java.util.List;
 
@@ -22,11 +24,13 @@ public class BlogImpl implements BlogDefinition {
     @Override
     public Blog savePost(BlogDTO blogDTO) {
         Blog blog = new Blog();
+        Timestamp timestamp = new Timestamp(new Date().getTime());
         blog.setTitle(blogDTO.getTitle());
         blog.setContent(blogDTO.getContent());
-        blog.setCreatedAt(new Date());
-        blog.setUpdatedAt(new Date());
+        blog.setCreatedAt(timestamp);
+        blog.setUpdatedAt(timestamp);
         blog.setUser(userDao.getUserByUid(blogDTO.getUserUID()));
+        blog.setStatus(BlogEnum.ACTIVE);
         return blogDAO.save(blog);
     }
 
