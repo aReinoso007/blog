@@ -20,30 +20,27 @@ public class UserController {
     @Autowired
     private UserImpl userService;
 
-    @GetMapping(value = "/hola")
+    @GetMapping(value = "/")
     public ResponseEntity<?> appInit(){
-        System.out.printf("Getting rest controller");
-        return ResponseEntity.status(HttpStatus.OK).body("holaa");
+        return ResponseEntity.status(HttpStatus.OK).contentType(MediaType.APPLICATION_JSON).body(userService.getAllUsers());
     }
 
     @PostMapping(value = "/registro")
     public ResponseEntity<?> signUp(@RequestBody User user){
         /*Podria usar un diccionario para poner el tipo de retorno que tengo, si es error o exito */
-        return userService.saveUser(user)!= null ? ResponseEntity.status(HttpStatus.CREATED).body("Usuario creado con exito") : ResponseEntity.status(HttpStatus.CONFLICT).body("Algo salio mal");
+        final String success = "Usuario creado con exito";
+        final String error = "Algo salio mal";
+        return userService.saveUser(user)!= null ? ResponseEntity.status(HttpStatus.CREATED).body(success) : ResponseEntity.status(HttpStatus.CONFLICT).body(error);
     }
 
     @GetMapping(value = "/login")
     public ResponseEntity<?> signIn(@RequestBody UserDTO userDTO){
-        return ResponseEntity.status(HttpStatus.OK).body("exito");
-    }
-
-    @GetMapping(value = "/myPosts")
-    public ResponseEntity<List<Blog>> getMyPosts(){
-        return ResponseEntity.status(HttpStatus.OK).contentType(MediaType.APPLICATION_JSON).body(new ArrayList<>());
+        User appUser = userService.getUserDataByCreds(userDTO.getEmail(), userDTO.getPassword());
+        return ResponseEntity.status(HttpStatus.OK).contentType(MediaType.APPLICATION_JSON).body(appUser);
     }
 
     @PutMapping(value = "/update_info")
-    public ResponseEntity<?> updateUserInfo(@RequestBody UserDTO userDTO){
+    public ResponseEntity<?> updateUserInfo(@RequestBody User user){
         return ResponseEntity.status(HttpStatus.OK).body("updated");
     }
 

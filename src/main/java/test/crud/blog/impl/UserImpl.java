@@ -6,6 +6,8 @@ import test.crud.blog.dao.UserDao;
 import test.crud.blog.definition.UserDefinition;
 import test.crud.blog.entity.User;
 
+import java.util.List;
+
 @Service
 public class UserImpl implements UserDefinition {
 
@@ -30,5 +32,10 @@ public class UserImpl implements UserDefinition {
     @Override
     public User getUserInfo(Long uid) {
         return userDao.getUserByUid(uid);
+    }
+
+    @Override
+    public List<User> getAllUsers() {
+        return userDao.findAll();
     }
 }
