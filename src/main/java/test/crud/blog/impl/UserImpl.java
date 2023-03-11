@@ -25,11 +25,6 @@ public class UserImpl implements UserDefinition {
     }
 
     @Override
-    public User updateUserInfo(User user) {
-        return userDao.save(user);
-    }
-
-    @Override
     public User getUserInfo(Long uid) {
         return userDao.getUserByUid(uid);
     }

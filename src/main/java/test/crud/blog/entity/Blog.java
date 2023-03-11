@@ -36,6 +36,8 @@ public class Blog implements Serializable {
     public Blog() {
     }
 
+
+
     public Blog(String title, String content, Date createdAt, Date updatedAt, User user) {
         this.title = title;
         this.content = content;

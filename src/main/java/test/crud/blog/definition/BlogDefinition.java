@@ -1,11 +1,13 @@
 package test.crud.blog.definition;
 
+import test.crud.blog.dto.BlogDTO;
 import test.crud.blog.entity.Blog;
 
 import java.util.List;
 
 public interface BlogDefinition {
 
+    Blog savePost(BlogDTO blogDTO);
     List<Blog> getAll();
     Blog getBlogById(Long blogUid);
     List<Blog> getUserBlogsByUID(Long userUID);
