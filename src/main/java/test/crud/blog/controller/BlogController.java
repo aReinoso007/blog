@@ -6,7 +6,6 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import test.crud.blog.dto.BlogDTO;
-import test.crud.blog.entity.Blog;
 import test.crud.blog.impl.BlogImpl;
 
 import java.util.Date;
