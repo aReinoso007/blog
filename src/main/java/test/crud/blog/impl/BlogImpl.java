@@ -13,6 +13,7 @@ import test.crud.blog.enums.BlogEnum;
 import java.sql.Timestamp;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class BlogImpl implements BlogDefinition {
@@ -41,7 +42,7 @@ public class BlogImpl implements BlogDefinition {
     }
 
     @Override
-    public Blog getBlogById(Long blogUid) {
+    public Optional<Blog> getBlogById(Long blogUid) {
         return blogDAO.findByUid(blogUid);
     }
 

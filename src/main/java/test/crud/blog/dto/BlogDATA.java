@@ -1,9 +1,6 @@
 package test.crud.blog.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import test.crud.blog.enums.StatusEnum;
-
-import java.io.Serializable;
 import java.sql.Timestamp;
 
 public interface BlogDATA{

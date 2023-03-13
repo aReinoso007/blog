@@ -19,7 +19,7 @@ public class Blog implements Serializable {
     private long uid;
     @Column(name = "BLOG_TITLE")
     private String title;
-    @Column(name = "BLOG_CONTENT")
+    @Column(name = "BLOG_CONTENT", length = 1024)
     private String content;
     @Column(name = "BLOG_CREATEDAT")
     @Temporal(TemporalType.TIMESTAMP)

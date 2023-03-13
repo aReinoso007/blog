@@ -7,11 +7,13 @@ import test.crud.blog.dto.BlogDATA;
 import test.crud.blog.entity.Blog;
 
 import java.util.List;
+import java.util.Optional;
+
 @Repository
 public interface BlogDAO extends JpaRepository<Blog, Long> {
 
     List<Blog> findAll();
-    Blog findByUid(Long blogUID);
+    Optional<Blog> findByUid(Long blogUID);
     List<Blog> findAllByUserUid(Long userUID);
 
     @Query(value = "SELECT BL.BLOG_UID AS UID, BL.BLOG_CONTENT AS contenido, BL.BLOG_CREATEDAT AS createdAt, BL.BLOG_STATUS AS status,\n" +
