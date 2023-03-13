@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import test.crud.blog.dao.BlogDAO;
 import test.crud.blog.dao.UserDao;
 import test.crud.blog.definition.BlogDefinition;
+import test.crud.blog.dto.BlogDATA;
 import test.crud.blog.dto.BlogDTO;
 import test.crud.blog.entity.Blog;
 import test.crud.blog.enums.BlogEnum;
@@ -47,5 +48,10 @@ public class BlogImpl implements BlogDefinition {
     @Override
     public List<Blog> getUserBlogsByUID(Long userUID) {
         return blogDAO.findAllByUserUid(userUID);
+    }
+
+    @Override
+    public List<BlogDATA> getBlogList() {
+        return blogDAO.getAllBlogs();
     }
 }

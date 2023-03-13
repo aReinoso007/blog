@@ -6,7 +6,6 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import test.crud.blog.dto.Credentials;
-import test.crud.blog.dto.UserDTO;
 import test.crud.blog.entity.User;
 import test.crud.blog.impl.UserImpl;
 

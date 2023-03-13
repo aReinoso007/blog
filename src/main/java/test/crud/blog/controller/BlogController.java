@@ -23,6 +23,11 @@ public class BlogController {
         return ResponseEntity.status(HttpStatus.OK).contentType(MediaType.APPLICATION_JSON).body(blogService.getAll());
     }
 
+    @GetMapping(value = "/all")
+    public ResponseEntity<?> getAllBlogs(){
+        return ResponseEntity.status(HttpStatus.OK).contentType(MediaType.APPLICATION_JSON).body(blogService.getBlogList());
+    }
+
     @PostMapping(value = "/")
     public ResponseEntity<?> savePost(@RequestBody BlogDTO blog){
         return ResponseEntity.status(HttpStatus.OK).contentType(MediaType.APPLICATION_JSON).body(blogService.savePost(blog));
