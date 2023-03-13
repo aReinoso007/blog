@@ -13,7 +13,7 @@ import java.util.Optional;
 public interface BlogDAO extends JpaRepository<Blog, Long> {
 
     List<Blog> findAll();
-    Optional<Blog> findByUid(Long blogUID);
+    Blog findByUid(Long blogUID);
     List<Blog> findAllByUserUid(Long userUID);
 
     @Query(value = "SELECT BL.BLOG_UID AS UID, BL.BLOG_CONTENT AS contenido, BL.BLOG_CREATEDAT AS createdAt, BL.BLOG_STATUS AS status,\n" +

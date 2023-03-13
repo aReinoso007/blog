@@ -11,7 +11,8 @@ public interface BlogDefinition {
 
     Blog savePost(BlogDTO blogDTO);
     List<Blog> getAll();
-    Optional<Blog> getBlogById(Long blogUid);
+    Blog getBlogById(Long blogUid);
     List<Blog> getUserBlogsByUID(Long userUID);
     List<BlogDATA> getBlogList();
+    Blog updateBlog(BlogDTO blogDTO);
 }

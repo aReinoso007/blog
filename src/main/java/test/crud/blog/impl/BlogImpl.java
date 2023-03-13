@@ -42,7 +42,7 @@ public class BlogImpl implements BlogDefinition {
     }
 
     @Override
-    public Optional<Blog> getBlogById(Long blogUid) {
+    public Blog getBlogById(Long blogUid) {
         return blogDAO.findByUid(blogUid);
     }
 
@@ -54,5 +54,15 @@ public class BlogImpl implements BlogDefinition {
     @Override
     public List<BlogDATA> getBlogList() {
         return blogDAO.getAllBlogs();
+    }
+
+    @Override
+    public Blog updateBlog(BlogDTO blogDTO) {
+        Blog blog = blogDAO.findByUid(blogDTO.getUid());
+        blog.setContent(blogDTO.getContent());
+        Timestamp timestamp = new Timestamp(new Date().getTime());
+        blog.setUpdatedAt(timestamp);
+        blog.setTitle(blogDTO.getTitle());
+        return blogDAO.save(blog);
     }
 }

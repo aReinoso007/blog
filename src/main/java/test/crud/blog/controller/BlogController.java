@@ -26,7 +26,7 @@ public class BlogController {
     }
 
     @GetMapping(value = "/{id}")
-    public Optional<Blog> getBlogById(@PathVariable("id") long id){
+    public Blog getBlogById(@PathVariable("id") long id){
         return blogService.getBlogById(id);
     }
 
@@ -41,8 +41,8 @@ public class BlogController {
     }
 
     @PutMapping(value = "/update")
-    public ResponseEntity<?> updatePost(@RequestBody Blog blog){
-        return ResponseEntity.status(HttpStatus.OK).contentType(MediaType.APPLICATION_JSON).body("");
+    public ResponseEntity<?> updatePost(@RequestBody BlogDTO blogDTO){
+        return ResponseEntity.status(HttpStatus.OK).contentType(MediaType.APPLICATION_JSON).body(blogService.updateBlog(blogDTO));
     }
 
 }
