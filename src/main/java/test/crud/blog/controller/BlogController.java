@@ -26,8 +26,8 @@ public class BlogController {
     }
 
     @GetMapping(value = "/{id}")
-    public Blog getBlogById(@PathVariable("id") long id){
-        return blogService.getBlogById(id);
+    public Blog getBlogById(@PathVariable("id") String id){
+        return blogService.getBlogById(Long.parseLong(id));
     }
 
     @GetMapping(value = "/all")
